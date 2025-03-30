@@ -14,7 +14,7 @@ const About = () => {
       image: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e",
     },
     {
-        name: "H. mishra",
+        name: "Bolaram sarkar",
         role: "Fullstack Developer",
         image: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e",
       },

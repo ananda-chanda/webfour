@@ -5,6 +5,7 @@ import Work from './Work';
 import Hero from './Hero';
 import Service from './Service';
 import Process from './Process';
+import Card from './Card'
 
 // Animation variants
 const sectionVariants = {
@@ -63,6 +64,10 @@ export const Home = () => {
       
       <AnimatedSection>
         <Service />
+      </AnimatedSection>
+
+      <AnimatedSection>
+        <Card />
       </AnimatedSection>
       
       <AnimatedSection>

@@ -6,22 +6,30 @@ const WebsiteProcess = () => {
     {
       image: "https://storage.googleapis.com/a1aa/image/3JJ4Yg7Tu5aOu_9LgKvjstGkQZS_ZORRArGI3GPt2QI.jpg",
       title: "Let's Speak and Find Out What We Can",
-      description: "First and foremost, we'll get to know one another, establish project requirements and expectations, as well as what your organization's online objectives are and how we can assist you in achieving them."
+      description: "First and foremost, we'll get to know one another, establish project requirements and expectations, as well as what your organization's online objectives are and how we can assist you in achieving them.",
+      gradient: "from-blue-500 to-indigo-600",
+      iconBg: "bg-blue-100"
     },
     {
       image: "https://storage.googleapis.com/a1aa/image/75K7LeS-sWx8xAyWiFO6SCwf6J6ipGptfWa7wkmnLbg.jpg",
       title: "Originality and Originality of Material",
-      description: "The success of every website is dependent on the quality of its content. Therefore, we will assist you in creating the content for your website using our web experience and your industry knowledge, or we will assist you in finding a specialist to handle this part of the project."
+      description: "The success of every website is dependent on the quality of its content. Therefore, we will assist you in creating the content for your website using our web experience and your industry knowledge, or we will assist you in finding a specialist to handle this part of the project.",
+      gradient: "from-purple-500 to-pink-600",
+      iconBg: "bg-purple-100"
     },
     {
       image: "https://storage.googleapis.com/a1aa/image/-9t_JfdBBTPCISt7gzXt8dURdmTlV32Gr1uHfYDP0qo.jpg",
       title: "Construct and Test a Prototype",
-      description: "As part of the process, we will build a single website that will display your material according to current web standards. We will test it on the most recent, most popular browsers and different mobile device resolutions. So let's work together to develop a solution that offers an excellent experience for desktop computers and mobile devices."
+      description: "As part of the process, we will build a single website that will display your material according to current web standards. We will test it on the most recent, most popular browsers and different mobile device resolutions. So let's work together to develop a solution that offers an excellent experience for desktop computers and mobile devices.",
+      gradient: "from-teal-500 to-green-600",
+      iconBg: "bg-teal-100"
     },
     {
       image: "https://storage.googleapis.com/a1aa/image/0YxhVw3X1JjXhi4uLB41z1Pe8aBrKqZPMjB7fzf4XTk.jpg",
       title: "Conduct a Preview and Launch",
-      description: "During this last stage, you will have access to a live preview of your new website, allowing you to get a true sense of how it will navigate and interact with visitors. Then, when you are completely happy with the final product, we will work with you to organize your new online identity to disclose at the right moment for your audience."
+      description: "During this last stage, you will have access to a live preview of your new website, allowing you to get a true sense of how it will navigate and interact with visitors. Then, when you are completely happy with the final product, we will work with you to organize your new online identity to disclose at the right moment for your audience.",
+      gradient: "from-orange-500 to-red-600",
+      iconBg: "bg-orange-100"
     }
   ];
 
@@ -30,66 +38,110 @@ const WebsiteProcess = () => {
   };
 
   return (
-    <div className="bg-white m-0 p-0 font-sans">
-      <div className="max-w-6xl mx-auto p-5">
+    <div className="bg-gradient-to-b from-gray-50 to-gray-100 py-16">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div 
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="text-center text-blue-600 font-bold text-2xl mb-5"
+          className="text-center mb-12"
         >
-          Processes That We Use Creating a Website in Four Simple Stages
+          <h2 className="text-3xl md:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-800 mb-4">
+            Our Four-Step Website Creation Process
+          </h2>
+          <p className="max-w-3xl mx-auto text-lg text-gray-600">
+            We follow a streamlined approach to deliver high-quality websites that meet your business objectives
+          </p>
         </motion.div>
         
-        <motion.div 
-          className="grid grid-cols-1 md:grid-cols-2 gap-5"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-        >
-          {steps.map((step, index) => (
-            <motion.div 
-              key={index}
-              className="border border-blue-600 p-5 text-center rounded"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: 0.1 * index }}
-              whileHover={{ scale: 1.02 }}
-            >
-              <motion.img 
-                src={step.image} 
-                alt={`Icon for ${step.title}`} 
-                className="w-20 h-20 mb-5 mx-auto"
-                whileHover={{ rotate: 5 }}
-              />
-              <motion.h3 
-                className="text-black text-lg font-medium mb-2"
-              >
-                {step.title}
-              </motion.h3>
-              <motion.p 
-                className="text-gray-700 text-base"
-              >
-                {step.description}
-              </motion.p>
-            </motion.div>
-          ))}
-        </motion.div>
+        <div className="relative">
+          {/* Connection lines between steps */}
+          <div className="absolute hidden md:block top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-300 to-indigo-500 transform -translate-y-1/2 z-0"></div>
         
-        {/* Get Started Button */}
+          <motion.div 
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            {steps.map((step, index) => (
+              <motion.div 
+                key={index}
+                className="relative"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.1 * (index + 1) }}
+              >
+                {/* Step number */}
+                <motion.div 
+                  className={`absolute -top-4 -left-4 w-8 h-8 rounded-full bg-gradient-to-r ${step.gradient} text-white flex items-center justify-center font-bold shadow-lg`}
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{ duration: 0.3, delay: 0.2 * (index + 1) }}
+                >
+                  {index + 1}
+                </motion.div>
+                
+                {/* Card */}
+                <motion.div 
+                  className="bg-white rounded-xl shadow-lg overflow-hidden h-full"
+                  whileHover={{ 
+                    y: -5,
+                    boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
+                  }}
+                >
+                  {/* Card header */}
+                  <div className={`h-2 bg-gradient-to-r ${step.gradient}`}></div>
+                  
+                  {/* Card content */}
+                  <div className="p-6">
+                    <div className={`${step.iconBg} w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4`}>
+                      <motion.img 
+                        src={step.image} 
+                        alt={`Icon for ${step.title}`} 
+                        className="w-10 h-10"
+                        whileHover={{ rotate: 10, scale: 1.1 }}
+                        transition={{ type: "spring", stiffness: 300 }}
+                      />
+                    </div>
+                    
+                    <h3 className="text-xl font-bold text-gray-800 mb-3 text-center">
+                      {step.title}
+                    </h3>
+                    
+                    <p className="text-gray-600 leading-relaxed">
+                      {step.description}
+                    </p>
+                  </div>
+                </motion.div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+        
+        {/* Get Started Section */}
         <motion.div 
-          className="text-center mt-8"
+          className="mt-16 text-center"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.6 }}
+          transition={{ duration: 0.5, delay: 0.8 }}
         >
+          <h3 className="text-2xl font-bold text-gray-800 mb-6">
+            Ready to start your project with us?
+          </h3>
+          
           <motion.button 
             onClick={handleGetStarted}
-            className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-6 rounded"
+            className="px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-700 text-white font-medium rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
             whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+            whileTap={{ scale: 0.98 }}
           >
-            Get Started
+            <span className="flex items-center justify-center">
+              <span>Get Started Today</span>
+              <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            </span>
           </motion.button>
         </motion.div>
       </div>
