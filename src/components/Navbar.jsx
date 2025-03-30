@@ -8,9 +8,11 @@ export const Navbar = () => {
     <nav className="bg-gray-800 sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
         <div className="relative flex items-center justify-between h-20">
-          {/* Logo moved to the left in mobile */}
+          {/* Logo moved to the left in mobile, now clickable and redirects to home */}
           <div className="flex-shrink-0 sm:order-first flex items-center">
-            <img className="h-12 w-12" src={logo} alt="Logo" />
+            <a href="/" className="flex items-center focus:outline-none hover:opacity-80 transition-opacity">
+              <img className="h-12 w-12" src={logo} alt="Logo" />
+            </a>
           </div>
 
           {/* Mobile menu button moved to the right */}
