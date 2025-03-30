@@ -8,6 +8,9 @@ const WebDesignServices = () => {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0 }
   };
+  const handleConsultation = () => {
+    window.open('https://wa.me/917063389331', '_blank');
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 font-sans py-16">
@@ -221,6 +224,7 @@ const WebDesignServices = () => {
               Our team of experts is ready to bring your vision to life.
             </p>
             <motion.button 
+              onClick={handleConsultation}
               className="px-8 py-3 bg-white text-blue-700 font-medium rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.98 }}

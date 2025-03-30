@@ -1,6 +1,11 @@
 import React from 'react';
 
 const PricingPlans = () => {
+  // Function to handle WhatsApp redirection
+  const handleGetStarted = () => {
+    window.open('https://wa.me/917063389331', '_blank');
+  };
+
   const plans = [
     {
       badge: { text: "STARTER", className: "bg-gradient-to-r from-blue-700 to-blue-900" },
@@ -134,9 +139,19 @@ const PricingPlans = () => {
                 ))}
               </div>
               
-              <button className={`w-full py-3 rounded-full font-medium bg-gradient-to-r ${plan.buttonGradient} hover:opacity-90 transition-opacity text-white shadow-lg`}>
-                Get Started
+              <button 
+                onClick={handleGetStarted}
+                className={`w-full py-3 rounded-full font-medium bg-gradient-to-r ${plan.buttonGradient} hover:opacity-90 transition-opacity text-white shadow-lg flex items-center justify-center`}
+              >
+                <span>Get Started</span>
+                <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
               </button>
+              
+              <div className="text-xs text-center mt-2 text-gray-400">
+                Contact us on WhatsApp
+              </div>
             </div>
           ))}
         </div>

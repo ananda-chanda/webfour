@@ -18,6 +18,12 @@ const BlueDigitalWebFourMedia = () => {
     { name: 'Java', alt: 'Java logo', src: 'https://www.vectorlogo.zone/logos/java/java-icon.svg', gradient: 'from-blue-600 to-red-600' }
   ];
 
+  // Function to handle WhatsApp redirection
+  const handleContactClick = () => {
+    // WhatsApp link with your number
+    window.open('https://wa.me/917063389331', '_blank');
+  };
+
   return (
     <div className="relative min-h-screen bg-gradient-to-b from-gray-100 to-gray-200 py-16">
       {/* Background gradient overlay with subtle pattern */}
@@ -106,7 +112,8 @@ const BlueDigitalWebFourMedia = () => {
               Let's create something amazing together using the latest technologies and our expertise
             </p>
             <motion.button 
-              className="px-8 py-3 bg-white text-blue-700 font-medium rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+              onClick={handleContactClick}
+              className="px-8 py-3 bg-white text-blue-700 font-medium rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center mx-auto"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.98 }}
             >
@@ -117,6 +124,9 @@ const BlueDigitalWebFourMedia = () => {
                 </svg>
               </span>
             </motion.button>
+            <p className="text-blue-100 text-sm mt-4">
+              Or message us directly on WhatsApp at +91 7063389331
+            </p>
           </div>
         </motion.div>
       </div>
