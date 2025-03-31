@@ -9,12 +9,12 @@ const About = () => {
       image: "https://images.unsplash.com/photo-1560250097-0b93528c311a",
     },
     {
-      name: "Prasanta Kumar",
+      name: "Avery Smith",
       role: "Technical Lead",
       image: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e",
     },
     {
-        name: "Bolaram sarkar",
+        name: "Alex Johnson",
         role: "Fullstack Developer",
         image: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e",
       },
