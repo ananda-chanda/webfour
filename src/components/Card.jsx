@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 
 const PricingPlans = () => {
   // Function to handle WhatsApp redirection
@@ -71,6 +72,28 @@ const PricingPlans = () => {
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-gradient-to-b from-gray-900 to-black text-white p-4 py-16">
+      {/* SEO Meta Tags */}
+      <Helmet>
+        <title>Pricing Plans | WebFour Solutions</title>
+        <meta
+          name="description"
+          content="Explore our flexible pricing plans for web development services. Choose from Basic, Professional, and Enterprise plans tailored to your needs."
+        />
+        <meta
+          name="keywords"
+          content="pricing plans, web development pricing, Basic plan, Professional plan, Enterprise plan, WebFour Solutions"
+        />
+        <meta property="og:title" content="Pricing Plans | WebFour Solutions" />
+        <meta
+          property="og:description"
+          content="Explore our flexible pricing plans for web development services. Choose from Basic, Professional, and Enterprise plans tailored to your needs."
+        />
+        <meta property="og:image" content="https://www.webfour.tech/og-image.jpg" />
+        <meta property="og:url" content="https://www.webfour.tech/pricing" />
+        <meta property="og:type" content="website" />
+        <link rel="canonical" href="https://www.webfour.tech/pricing" />
+      </Helmet>
+
       <div className="container mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold mb-4">Our Pricing Plans</h2>

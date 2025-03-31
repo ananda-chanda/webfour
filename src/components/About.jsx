@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import {Helmet} from 'react-helmet';
 
 const About = () => {
   const teamMembers = [
@@ -23,6 +24,27 @@ const About = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
+
+<Helmet>
+        <title>About Us | WebFour Media</title>
+        <meta
+          name="description"
+          content="Learn more about WebFour Media, a leading digital solutions provider specializing in web development, mobile applications, and digital marketing since 2005."
+        />
+        <meta
+          name="keywords"
+          content="About WebFour Media, web development, mobile applications, digital marketing, leadership team"
+        />
+        <meta property="og:title" content="About Us | WebFour Media" />
+        <meta
+          property="og:description"
+          content="Learn more about WebFour Media, a leading digital solutions provider specializing in web development, mobile applications, and digital marketing since 2005."
+        />
+        <meta property="og:image" content="https://www.webfour.tech//og-image.jpg" />
+        <meta property="og:url" content="https://www.webfour.tech//about" />
+        <meta property="og:type" content="website" />
+        <link rel="canonical" href="https://www.webfour.tech//about" />
+      </Helmet>
       {/* Hero Section */}
       <div className="bg-gradient-to-r from-blue-800 to-indigo-900 text-white py-20">
         <div className="container mx-auto px-4">

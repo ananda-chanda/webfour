@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Res from '../assets/Res.jpg';
+import { Helmet } from 'react-helmet';
 
 const WebDesignServices = () => {
   // Animation variants
@@ -14,6 +15,29 @@ const WebDesignServices = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 font-sans py-16">
+
+<Helmet>
+        <title>Web Design Services | WebFour Solutions</title>
+        <meta
+          name="description"
+          content="Explore our responsive web design and development services. We specialize in creating static and dynamic websites tailored to your business needs."
+        />
+        <meta
+          name="keywords"
+          content="web design services, responsive websites, static websites, dynamic websites, web development, WebFour Solutions"
+        />
+        <meta property="og:title" content="Web Design Services | WebFour Solutions" />
+        <meta
+          property="og:description"
+          content="Explore our responsive web design and development services. We specialize in creating static and dynamic websites tailored to your business needs."
+        />
+        <meta property="og:image" content="https://www.webfour.tech/og-image.jpg" />
+        <meta property="og:url" content="https://www.webfour.tech/service" />
+        <meta property="og:type" content="website" />
+        <link rel="canonical" href="https://www.webfour.tech/service" />
+      </Helmet>
+
+   
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div 
           initial="hidden"
