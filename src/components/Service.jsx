@@ -17,10 +17,10 @@ const WebDesignServices = () => {
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 font-sans py-16">
 
 <Helmet>
-        <title>Web Design Services | WebFour Solutions</title>
+        <title>Webfour service  | WebFour Solutions</title>
         <meta
           name="description"
-          content="Explore our responsive web design and development services. We specialize in creating static and dynamic websites tailored to your business needs."
+          content="low budget website. "
         />
         <meta
           name="keywords"
