@@ -62,10 +62,12 @@ export const Home = () => {
         <Work />
       </AnimatedSection>
       
-      <AnimatedSection>
+      {/* <AnimatedSection>
         <Service />
-      </AnimatedSection>
+      </AnimatedSection> */}
 
+
+<Service />
       <AnimatedSection>
         <Card />
       </AnimatedSection>

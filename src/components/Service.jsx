@@ -1,268 +1,454 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import Res from '../assets/Res.jpg';
-import { Helmet } from 'react-helmet';
+import React, { useState, useEffect } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { Sparkles, Zap, Rocket, Code, Palette, TrendingUp, Shield, Globe, ArrowRight, Check, Star } from 'lucide-react';
 
 const WebDesignServices = () => {
-  // Animation variants
-  const fadeIn = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0 }
-  };
+  const [activeTab, setActiveTab] = useState('static');
+  const [isVisible, setIsVisible] = useState(false);
+  const { scrollYProgress } = useScroll();
+  const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
+  const scale = useTransform(scrollYProgress, [0, 0.2], [1, 0.95]);
+
+  // Particle animation
+  const [particles, setParticles] = useState([]);
+
+  useEffect(() => {
+    // Set document title
+    document.title = 'WebFour Services | Premium Web Solutions';
+    setIsVisible(true);
+    
+    const newParticles = Array.from({ length: 15 }, (_, i) => ({
+      id: i,
+      x: Math.random() * 100,
+      y: Math.random() * 100,
+      size: Math.random() * 3 + 1,
+      duration: Math.random() * 20 + 10,
+    }));
+    setParticles(newParticles);
+  }, []);
+
   const handleConsultation = () => {
     window.open('https://wa.me/917063389331', '_blank');
   };
 
+  const services = [
+    {
+      icon: <Code className="w-8 h-8" />,
+      title: "Custom Development",
+      description: "Tailored solutions built from scratch",
+      gradient: "from-purple-500 to-pink-500"
+    },
+    {
+      icon: <Palette className="w-8 h-8" />,
+      title: "Creative Design",
+      description: "Stunning visuals that captivate",
+      gradient: "from-blue-500 to-cyan-500"
+    },
+    {
+      icon: <TrendingUp className="w-8 h-8" />,
+      title: "SEO Optimized",
+      description: "Built to rank and perform",
+      gradient: "from-green-500 to-emerald-500"
+    },
+    {
+      icon: <Shield className="w-8 h-8" />,
+      title: "Secure & Fast",
+      description: "Enterprise-grade security",
+      gradient: "from-orange-500 to-red-500"
+    }
+  ];
+
+  const staticFeatures = [
+    "Lightning-fast load times",
+    "Zero maintenance required",
+    "Maximum security",
+    "Cost-effective hosting",
+    "Perfect SEO performance"
+  ];
+
+  const dynamicFeatures = [
+    "Real-time data updates",
+    "User authentication",
+    "Database integration",
+    "Admin dashboards",
+    "API integrations"
+  ];
+
+  const stats = [
+    { value: "500+", label: "Projects Delivered" },
+    { value: "20+", label: "Years Experience" },
+    { value: "98%", label: "Client Satisfaction" },
+    { value: "24/7", label: "Support Available" }
+  ];
+
+  // Placeholder images - replace with your actual images
+  const heroImage = "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80";
+  const staticImage = "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80";
+  const dynamicImage = "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80";
+
+  if (!isVisible) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 flex items-center justify-center">
+        <div className="text-white text-xl">Loading...</div>
+      </div>
+    );
+  }
+
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 font-sans py-16">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 overflow-hidden">
+      {/* Animated Background Particles */}
+      <div className="fixed inset-0 pointer-events-none overflow-hidden">
+        {particles.map((particle) => (
+          <motion.div
+            key={particle.id}
+            className="absolute rounded-full bg-white opacity-20"
+            style={{
+              width: particle.size,
+              height: particle.size,
+              left: `${particle.x}%`,
+              top: `${particle.y}%`,
+            }}
+            animate={{
+              y: [0, -30, 0],
+              opacity: [0.2, 0.5, 0.2],
+            }}
+            transition={{
+              duration: particle.duration,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
+        ))}
+      </div>
 
-<Helmet>
-        <title>Webfour service  | WebFour Solutions</title>
-        <meta
-          name="description"
-          content="low budget website. "
-        />
-        <meta
-          name="keywords"
-          content="web design services, responsive websites, static websites, dynamic websites, web development, WebFour Solutions"
-        />
-        <meta property="og:title" content="Web Design Services | WebFour Solutions" />
-        <meta
-          property="og:description"
-          content="Explore our responsive web design and development services. We specialize in creating static and dynamic websites tailored to your business needs."
-        />
-        <meta property="og:image" content="https://www.webfour.tech/og-image.jpg" />
-        <meta property="og:url" content="https://www.webfour.tech/service" />
-        <meta property="og:type" content="website" />
-        <link rel="canonical" href="https://www.webfour.tech/service" />
-      </Helmet>
-
-   
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div 
-          initial="hidden"
-          animate="visible"
-          transition={{ duration: 0.6 }}
-          variants={fadeIn}
-          className="text-center mb-12"
-        >
-          <h1 className="text-4xl md:text-5xl font-extrabold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-700">
-            Responsive Web Design Services and Website Development
-          </h1>
-          <div className="h-1 w-32 mx-auto bg-gradient-to-r from-blue-500 to-indigo-600"></div>
-        </motion.div>
-        
-        <motion.div 
-          initial="hidden"
-          animate="visible"
-          transition={{ duration: 0.6, delay: 0.2 }}
-          variants={fadeIn}
-          className="bg-white p-8 md:p-12 rounded-2xl shadow-xl flex flex-col md:flex-row md:justify-between md:items-center gap-10 mb-16 border-t-4 border-gradient-to-r from-blue-500 to-indigo-600"
-          style={{ borderImage: 'linear-gradient(to right, #3b82f6, #4f46e5) 1' }}
-        >
-       <div className="md:max-w-lg lg:max-w-xl">
-  <h2 className="text-3xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-700 text-left">
-    What We Do At WebFour?
-  </h2>
-  
-  {/* Added gradient underline below heading */}
-  <div className="h-1 w-20 bg-gradient-to-r from-blue-500 to-indigo-600 mb-6"></div>
-  
-  <p className="text-lg font-normal text-gray-700 text-left leading-relaxed">
-    <span className="font-semibold bg-gradient-to-r from-blue-600 to-indigo-700 text-transparent bg-clip-text">WebFour &amp; Web Solutions</span>, 
-    established in 2005, having its corporate office in India, has expertise in 
-    <span className="px-1 mx-1 rounded bg-gradient-to-r from-blue-50 to-indigo-50 text-blue-700">Web &amp; Mobile Application Development</span> 
-    using advanced research, strategic thinking and planning, and innovative procurements 
-    and implementations to maximize client business reach and enhancing efficiency.
-  </p>
-  
-  {/* Enhanced vertical separator with animated gradient */}
-  <div className="mt-8 flex items-center p-4 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg border-l-4 border-gradient-to-b"
-       style={{ borderImage: 'linear-gradient(to bottom, #3b82f6, #4f46e5) 1' }}>
-    <motion.div 
-      className="h-12 w-1.5 bg-gradient-to-b from-blue-500 to-indigo-600 mr-4 rounded-full"
-      animate={{ 
-        boxShadow: ['0 0 0 rgba(59, 130, 246, 0)', '0 0 8px rgba(59, 130, 246, 0.5)', '0 0 0 rgba(59, 130, 246, 0)'] 
-      }}
-      transition={{ 
-        repeat: Infinity, 
-        duration: 2 
-      }}
-    ></motion.div>
-    <div>
-      <p className="text-gray-700 italic font-medium">
-        <span className="block text-lg mb-1 bg-gradient-to-r from-blue-600 to-indigo-700 text-transparent bg-clip-text font-bold">
-          Transforming ideas into powerful digital experiences
-        </span>
-        <span className="text-blue-600">since 2005</span>
-      </p>
-    </div>
-  </div>
-  
-  {/* Added feature dots with gradients */}
-  <div className="mt-6 grid grid-cols-2 gap-3">
-    {['Innovative', 'Strategic', 'Efficient', 'Responsive'].map((trait, index) => (
-      <motion.div 
-        key={index}
-        className="flex items-center"
-        initial={{ opacity: 0, x: -10 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ delay: 0.2 + (index * 0.1) }}
+      {/* Hero Section */}
+      <motion.section 
+        style={{ opacity, scale }}
+        className="relative min-h-screen flex items-center justify-center px-4 pt-20 pb-32"
       >
-        <span className="inline-block h-2 w-2 rounded-full bg-gradient-to-r from-blue-500 to-indigo-600 mr-2"></span>
-        <span className="text-gray-700 font-medium">{trait}</span>
-      </motion.div>
-    ))}
-  </div>
-</div>
-          
-          <div className="md:max-w-sm lg:max-w-md">
-            <motion.div 
-              className="rounded-xl overflow-hidden shadow-lg"
-              whileHover={{ scale: 1.03 }}
-              transition={{ type: "spring", stiffness: 300 }}
-            >
-              <img 
-                src={Res} 
-                alt="Responsive web design"
-                className="w-full h-auto object-cover transform transition-transform duration-500 hover:scale-105"
-              />
-              <div className="h-2 bg-gradient-to-r from-blue-500 to-indigo-600"></div>
-            </motion.div>
-          </div>
-        </motion.div>
-
-        {/* Static and Dynamic Website Sections */}
-        <div className="grid md:grid-cols-2 gap-10">
-          {/* Static Website Section */}
-          <motion.div 
-            initial="hidden"
-            animate="visible"
-            transition={{ duration: 0.6, delay: 0.4 }}
-            variants={fadeIn}
-            className="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100"
-            whileHover={{ y: -5, boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.1)" }}
+        <div className="max-w-7xl mx-auto text-center relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="mb-6"
           >
-            <div className="h-2 bg-gradient-to-r from-blue-500 to-indigo-600"></div>
-            <div className="p-8">
-              <div className="h-20 w-20 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg transform -rotate-6">
-                <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7" />
-                </svg>
-              </div>
-              <h3 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-700 mb-4 text-center">Static Website Development</h3>
-              <p className="text-gray-700 mb-5 font-light text-center">
-                We create beautiful, fast-loading static websites perfect for:
-              </p>
-              <div className="bg-gray-50 rounded-lg p-5 mb-5">
-                <ul className="text-left text-gray-600 space-y-3">
-                  {[
-                    'Business Portfolios', 
-                    'Landing Pages', 
-                    'Company Profiles', 
-                    'Informational Websites', 
-                    'Personal Portfolios'
-                  ].map((item, index) => (
-                    <motion.li 
-                      key={index}
-                      className="flex items-center"
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.6 + (index * 0.1) }}
-                    >
-                      <span className="inline-block h-2 w-2 rounded-full bg-gradient-to-r from-blue-500 to-indigo-600 mr-2"></span>
-                      {item}
-                    </motion.li>
-                  ))}
-                </ul>
-              </div>
-              <p className="text-gray-700 font-medium bg-gray-50/50 p-4 rounded-lg border-l-4 border-blue-500">
-                Static websites are cost-effective, secure, and perform exceptionally well for content that doesn't require frequent updates.
-              </p>
-            </div>
+            <span className="inline-flex items-center px-4 py-2 bg-purple-500/20 border border-purple-500/50 rounded-full text-purple-300 text-sm font-medium backdrop-blur-sm">
+              <Sparkles className="w-4 h-4 mr-2" />
+              Crafting Digital Excellence Since 2005
+            </span>
           </motion.div>
 
-          {/* Dynamic Website Section */}
-          <motion.div 
-            initial="hidden"
-            animate="visible"
-            transition={{ duration: 0.6, delay: 0.6 }}
-            variants={fadeIn}
-            className="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100"
-            whileHover={{ y: -5, boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.1)" }}
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-5xl md:text-7xl lg:text-8xl font-black mb-6 leading-tight"
           >
-            <div className="h-2 bg-gradient-to-r from-green-500 to-teal-600"></div>
-            <div className="p-8">
-              <div className="h-20 w-20 bg-gradient-to-br from-green-500 to-teal-600 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg transform rotate-6">
-                <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                </svg>
+            <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 text-transparent bg-clip-text">
+              Transform Your
+            </span>
+            <br />
+            <span className="text-white">Digital Presence</span>
+          </motion.h1>
+
+          <motion.p
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed"
+          >
+            We create stunning, high-performance websites that don't just look amazing—they drive real business results.
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+          >
+            <motion.button
+              onClick={handleConsultation}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="group px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full text-white font-bold text-lg shadow-2xl shadow-purple-500/50 flex items-center gap-2 hover:shadow-purple-500/70 transition-all duration-300"
+            >
+              Start Your Project
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </motion.button>
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="px-8 py-4 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full text-white font-bold text-lg hover:bg-white/20 transition-all duration-300"
+            >
+              View Our Work
+            </motion.button>
+          </motion.div>
+
+          {/* Hero Image */}
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.8 }}
+            className="mt-20 relative"
+          >
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-purple-500/30 mx-auto max-w-4xl">
+              <img
+                src={heroImage}
+                alt="Modern Web Development"
+                className="w-full h-auto object-cover"
+                onError={(e) => {
+                  e.target.style.display = 'none';
+                }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-purple-900/80 to-transparent"></div>
+            </div>
+            <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-purple-500 rounded-full blur-3xl opacity-30"></div>
+            <div className="absolute -top-10 -left-10 w-40 h-40 bg-pink-500 rounded-full blur-3xl opacity-30"></div>
+          </motion.div>
+        </div>
+      </motion.section>
+
+      {/* Stats Section */}
+      <section className="relative py-20 px-4">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            {stats.map((stat, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ delay: index * 0.1 }}
+                className="text-center"
+              >
+                <div className="text-4xl md:text-5xl font-black bg-gradient-to-r from-purple-400 to-pink-400 text-transparent bg-clip-text mb-2">
+                  {stat.value}
+                </div>
+                <div className="text-gray-400 font-medium">{stat.label}</div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Services Grid */}
+      <section className="relative py-20 px-4">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl md:text-5xl font-black text-white mb-4">
+              Why Choose WebFour?
+            </h2>
+            <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+              We combine creativity, technology, and strategy to deliver exceptional results
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {services.map((service, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ delay: index * 0.1 }}
+                whileHover={{ y: -10 }}
+                className="group relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300 cursor-pointer"
+              >
+                <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${service.gradient} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
+                  {service.icon}
+                </div>
+                <h3 className="text-xl font-bold text-white mb-2">{service.title}</h3>
+                <p className="text-gray-400">{service.description}</p>
+                <div className="absolute inset-0 bg-gradient-to-br from-purple-500/0 to-pink-500/0 group-hover:from-purple-500/10 group-hover:to-pink-500/10 rounded-2xl transition-all duration-300"></div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Website Types Section */}
+      <section className="relative py-20 px-4">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-4xl md:text-5xl font-black text-white mb-4">
+              Perfect Solution For Every Need
+            </h2>
+          </motion.div>
+
+          {/* Tabs */}
+          <div className="flex justify-center mb-12">
+            <div className="inline-flex bg-white/5 backdrop-blur-sm border border-white/10 rounded-full p-2">
+              <button
+                onClick={() => setActiveTab('static')}
+                className={`px-8 py-3 rounded-full font-bold transition-all duration-300 ${
+                  activeTab === 'static'
+                    ? 'bg-gradient-to-r from-blue-600 to-cyan-600 text-white shadow-lg'
+                    : 'text-gray-400 hover:text-white'
+                }`}
+              >
+                Static Websites
+              </button>
+              <button
+                onClick={() => setActiveTab('dynamic')}
+                className={`px-8 py-3 rounded-full font-bold transition-all duration-300 ${
+                  activeTab === 'dynamic'
+                    ? 'bg-gradient-to-r from-purple-600 to-pink-600 text-white shadow-lg'
+                    : 'text-gray-400 hover:text-white'
+                }`}
+              >
+                Dynamic Websites
+              </button>
+            </div>
+          </div>
+
+          {/* Content */}
+          <div className="grid md:grid-cols-2 gap-8 items-center">
+            <motion.div
+              key={activeTab}
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5 }}
+              className="relative"
+            >
+              <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
+                <img
+                  src={activeTab === 'static' ? staticImage : dynamicImage}
+                  alt={activeTab === 'static' ? 'Static Website' : 'Dynamic Website'}
+                  className="w-full h-auto object-cover"
+                  onError={(e) => {
+                    e.target.style.display = 'none';
+                  }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-purple-900/80 to-transparent"></div>
               </div>
-              <h3 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-teal-700 mb-4 text-center">Dynamic Website Development</h3>
-              <p className="text-gray-700 mb-5 font-light text-center">
-                Our dynamic websites offer interactive features and real-time updates, perfect for:
+            </motion.div>
+
+            <motion.div
+              key={`${activeTab}-content`}
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5 }}
+              className="space-y-6"
+            >
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-purple-500/20 border border-purple-500/50 rounded-full text-purple-300 text-sm font-medium backdrop-blur-sm">
+                {activeTab === 'static' ? <Zap className="w-4 h-4" /> : <Rocket className="w-4 h-4" />}
+                {activeTab === 'static' ? 'Fast & Efficient' : 'Powerful & Flexible'}
+              </div>
+
+              <h3 className="text-3xl md:text-4xl font-black text-white">
+                {activeTab === 'static' ? 'Static Website Development' : 'Dynamic Website Development'}
+              </h3>
+
+              <p className="text-gray-300 text-lg leading-relaxed">
+                {activeTab === 'static'
+                  ? 'Perfect for businesses that need a fast, secure, and cost-effective online presence. Our static websites load instantly and rank higher in search engines.'
+                  : 'Built for businesses that need advanced functionality, user interactions, and real-time updates. Our dynamic websites scale with your growth.'}
               </p>
-              <div className="bg-gray-50 rounded-lg p-5 mb-5">
-                <ul className="text-left text-gray-600 space-y-3">
-                  {[
-                    'E-commerce Platforms', 
-                    'Social Media Platforms', 
-                    'Content Management Systems', 
-                    'Customer Portals', 
-                    'Online Learning Platforms'
-                  ].map((item, index) => (
-                    <motion.li 
-                      key={index}
-                      className="flex items-center"
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.8 + (index * 0.1) }}
-                    >
-                      <span className="inline-block h-2 w-2 rounded-full bg-gradient-to-r from-green-500 to-teal-600 mr-2"></span>
-                      {item}
-                    </motion.li>
-                  ))}
-                </ul>
+
+              <div className="space-y-3">
+                {(activeTab === 'static' ? staticFeatures : dynamicFeatures).map((feature, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.1 }}
+                    className="flex items-center gap-3 text-gray-300"
+                  >
+                    <div className={`w-6 h-6 rounded-full flex items-center justify-center ${
+                      activeTab === 'static' 
+                        ? 'bg-gradient-to-br from-blue-500 to-cyan-500' 
+                        : 'bg-gradient-to-br from-purple-500 to-pink-500'
+                    }`}>
+                      <Check className="w-4 h-4 text-white" />
+                    </div>
+                    <span className="font-medium">{feature}</span>
+                  </motion.div>
+                ))}
               </div>
-              <p className="text-gray-700 font-medium bg-gray-50/50 p-4 rounded-lg border-l-4 border-green-500">
-                Dynamic websites allow real-time content updates, user interactions, and database integration for complex functionalities.
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="relative py-20 px-4">
+        <div className="max-w-5xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            className="relative bg-gradient-to-r from-purple-600 via-pink-600 to-purple-600 rounded-3xl p-8 md:p-16 text-center overflow-hidden"
+          >
+            {/* Animated background elements */}
+            <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
+            <div className="absolute bottom-0 left-0 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
+
+            <div className="relative z-10">
+              <motion.div
+                animate={{ rotate: [0, 360] }}
+                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                className="inline-block mb-6"
+              >
+                <Star className="w-16 h-16 text-yellow-300" fill="currentColor" />
+              </motion.div>
+
+              <h2 className="text-4xl md:text-5xl font-black text-white mb-6">
+                Ready to Get Started?
+              </h2>
+
+              <p className="text-xl text-purple-100 mb-10 max-w-2xl mx-auto">
+                Let's create something extraordinary together. Your dream website is just one conversation away.
+              </p>
+
+              <motion.button
+                onClick={handleConsultation}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="group px-10 py-5 bg-white text-purple-600 rounded-full font-bold text-lg md:text-xl shadow-2xl hover:shadow-white/30 transition-all duration-300 flex items-center gap-3 mx-auto"
+              >
+                Get Free Consultation
+                <ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform" />
+              </motion.button>
+
+              <p className="mt-6 text-purple-200 text-sm">
+                ⚡ No commitment required • 📞 Response within 24 hours
               </p>
             </div>
           </motion.div>
         </div>
-        
-        {/* Call to Action Section */}
-        <motion.div 
-          initial="hidden"
-          animate="visible"
-          transition={{ duration: 0.6, delay: 0.8 }}
-          variants={fadeIn}
-          className="mt-16 text-center"
-        >
-          <div className="bg-gradient-to-r from-blue-600 to-indigo-700 rounded-2xl p-8 md:p-12 shadow-xl">
-            <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
-              Ready to transform your online presence?
-            </h3>
-            <p className="text-blue-100 mb-8 max-w-2xl mx-auto">
-              Let's create a website that perfectly represents your brand and meets your business objectives. 
-              Our team of experts is ready to bring your vision to life.
-            </p>
-            <motion.button 
-              onClick={handleConsultation}
-              className="px-8 py-3 bg-white text-blue-700 font-medium rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              <span className="flex items-center justify-center">
-                <span>Get a Free Consultation</span>
-                <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                </svg>
-              </span>
-            </motion.button>
+      </section>
+
+      {/* Footer */}
+      <footer className="relative py-12 px-4 border-t border-white/10">
+        <div className="max-w-7xl mx-auto text-center">
+          <div className="flex items-center justify-center gap-2 mb-4">
+            <Globe className="w-6 h-6 text-purple-400" />
+            <span className="text-2xl font-black text-white">WebFour Solutions</span>
           </div>
-        </motion.div>
-      </div>
+          <p className="text-gray-400">
+            Transforming ideas into powerful digital experiences since 2005
+          </p>
+          <div className="mt-4">
+            <button
+              onClick={handleConsultation}
+              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full text-white font-bold hover:shadow-lg hover:shadow-purple-500/50 transition-all duration-300"
+            >
+              <span>Call: 7063389331</span>
+            </button>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 };

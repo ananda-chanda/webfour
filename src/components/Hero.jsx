@@ -37,8 +37,8 @@ const Hero = () => {
           </div>
           
           {/* Main headings with animation */}
-          <h1 className="text-6xl font-bold my-2 text-white animate-on-load opacity-0 translate-y-4 transition-all duration-500 ease-out delay-100">WebFour Media</h1>
-          <h2 className="text-6xl font-bold my-2 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-indigo-600 animate-on-load opacity-0 translate-y-4 transition-all duration-500 ease-out delay-200">Web Solutions</h2>
+          <h1 className="text-4xl md:text-6xl font-bold my-2 text-white animate-on-load opacity-0 translate-y-4 transition-all duration-500 ease-out delay-100">WebFour Media</h1>
+          <h2 className="text-4xl md:text-6xl font-bold my-2 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-indigo-600 animate-on-load opacity-0 translate-y-4 transition-all duration-500 ease-out delay-200">Web Solutions</h2>
           
           {/* Description box */}
           <div className="bg-black bg-opacity-80 p-6 rounded-lg my-6 text-lg text-white border-l-4 border-blue-600 shadow-lg animate-on-load opacity-0 translate-y-4 transition-all duration-500 ease-out delay-300">

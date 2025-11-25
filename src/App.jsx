@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
-import { Navbar } from './components/Navbar';
+import { Navbar } from './components/Navbar';  // Changed this line
 import Hero from './components/Hero';
 import Work from './components/Work';
 import Service from './components/Service';
