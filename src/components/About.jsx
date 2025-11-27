@@ -10,12 +10,12 @@ const About = () => {
       image: "https://images.unsplash.com/photo-1560250097-0b93528c311a",
     },
     {
-      name: "Avery Smith",
+      name: " Smith",
       role: "Technical Lead",
       image: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e",
     },
     {
-        name: "Alex Johnson",
+        name: "Arvind Kumar",
         role: "Fullstack Developer",
         image: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e",
       },

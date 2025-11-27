@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { Sparkles, Zap, Rocket, Code, Palette, TrendingUp, Shield, Globe, ArrowRight, Check, Star } from 'lucide-react';
+import { Helmet } from 'react-helmet';
+import { Sparkles, Zap, Rocket, Code, Palette, TrendingUp, Shield, ArrowRight, Check } from 'lucide-react';
 
 const WebDesignServices = () => {
   const [activeTab, setActiveTab] = useState('static');
-  const [isVisible, setIsVisible] = useState(false);
   const { scrollYProgress } = useScroll();
   const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
   const scale = useTransform(scrollYProgress, [0, 0.2], [1, 0.95]);
@@ -13,10 +13,6 @@ const WebDesignServices = () => {
   const [particles, setParticles] = useState([]);
 
   useEffect(() => {
-    // Set document title
-    document.title = 'WebFour Services | Premium Web Solutions';
-    setIsVisible(true);
-    
     const newParticles = Array.from({ length: 15 }, (_, i) => ({
       id: i,
       x: Math.random() * 100,
@@ -86,18 +82,32 @@ const WebDesignServices = () => {
   const staticImage = "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80";
   const dynamicImage = "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80";
 
-  if (!isVisible) {
-    return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 flex items-center justify-center">
-        <div className="text-white text-xl">Loading...</div>
-      </div>
-    );
-  }
-
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 overflow-hidden">
+    <div className="relative bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 overflow-hidden">
+      {/* SEO Meta Tags */}
+      <Helmet>
+        <title>Web Design Services | WebFour Solutions - Custom Websites & Development</title>
+        <meta
+          name="description"
+          content="Professional web design and development services. We create stunning static and dynamic websites with custom development, creative design, and SEO optimization. 20+ years experience."
+        />
+        <meta
+          name="keywords"
+          content="web design services, website development, static websites, dynamic websites, custom web development, responsive design, SEO optimization, WebFour Solutions"
+        />
+        <meta property="og:title" content="Web Design Services | WebFour Solutions" />
+        <meta
+          property="og:description"
+          content="Transform your digital presence with our premium web design and development services. Custom solutions tailored to your business needs."
+        />
+        <meta property="og:image" content="https://www.webfour.tech/og-image.jpg" />
+        <meta property="og:url" content="https://www.webfour.tech/service" />
+        <meta property="og:type" content="website" />
+        <link rel="canonical" href="https://www.webfour.tech/service" />
+      </Helmet>
+
       {/* Animated Background Particles */}
-      <div className="fixed inset-0 pointer-events-none overflow-hidden">
+      {/* <div className="absolute inset-0 pointer-events-none overflow-hidden">
         {particles.map((particle) => (
           <motion.div
             key={particle.id}
@@ -119,118 +129,10 @@ const WebDesignServices = () => {
             }}
           />
         ))}
-      </div>
+      </div> */}
 
-      {/* Hero Section */}
-      <motion.section 
-        style={{ opacity, scale }}
-        className="relative min-h-screen flex items-center justify-center px-4 pt-20 pb-32"
-      >
-        <div className="max-w-7xl mx-auto text-center relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="mb-6"
-          >
-            <span className="inline-flex items-center px-4 py-2 bg-purple-500/20 border border-purple-500/50 rounded-full text-purple-300 text-sm font-medium backdrop-blur-sm">
-              <Sparkles className="w-4 h-4 mr-2" />
-              Crafting Digital Excellence Since 2005
-            </span>
-          </motion.div>
 
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-5xl md:text-7xl lg:text-8xl font-black mb-6 leading-tight"
-          >
-            <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 text-transparent bg-clip-text">
-              Transform Your
-            </span>
-            <br />
-            <span className="text-white">Digital Presence</span>
-          </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed"
-          >
-            We create stunning, high-performance websites that don't just look amazing—they drive real business results.
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
-          >
-            <motion.button
-              onClick={handleConsultation}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="group px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full text-white font-bold text-lg shadow-2xl shadow-purple-500/50 flex items-center gap-2 hover:shadow-purple-500/70 transition-all duration-300"
-            >
-              Start Your Project
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </motion.button>
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-8 py-4 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full text-white font-bold text-lg hover:bg-white/20 transition-all duration-300"
-            >
-              View Our Work
-            </motion.button>
-          </motion.div>
-
-          {/* Hero Image */}
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.8 }}
-            className="mt-20 relative"
-          >
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-purple-500/30 mx-auto max-w-4xl">
-              <img
-                src={heroImage}
-                alt="Modern Web Development"
-                className="w-full h-auto object-cover"
-                onError={(e) => {
-                  e.target.style.display = 'none';
-                }}
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-purple-900/80 to-transparent"></div>
-            </div>
-            <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-purple-500 rounded-full blur-3xl opacity-30"></div>
-            <div className="absolute -top-10 -left-10 w-40 h-40 bg-pink-500 rounded-full blur-3xl opacity-30"></div>
-          </motion.div>
-        </div>
-      </motion.section>
-
-      {/* Stats Section */}
-      <section className="relative py-20 px-4">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {stats.map((stat, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ delay: index * 0.1 }}
-                className="text-center"
-              >
-                <div className="text-4xl md:text-5xl font-black bg-gradient-to-r from-purple-400 to-pink-400 text-transparent bg-clip-text mb-2">
-                  {stat.value}
-                </div>
-                <div className="text-gray-400 font-medium">{stat.label}</div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+  
 
       {/* Services Grid */}
       <section className="relative py-20 px-4">
@@ -324,7 +226,7 @@ const WebDesignServices = () => {
               <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
                 <img
                   src={activeTab === 'static' ? staticImage : dynamicImage}
-                  alt={activeTab === 'static' ? 'Static Website' : 'Dynamic Website'}
+                  alt={activeTab === 'static' ? 'Static Website Development' : 'Dynamic Website Development'}
                   className="w-full h-auto object-cover"
                   onError={(e) => {
                     e.target.style.display = 'none';
@@ -395,14 +297,6 @@ const WebDesignServices = () => {
             <div className="absolute bottom-0 left-0 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
 
             <div className="relative z-10">
-              <motion.div
-                animate={{ rotate: [0, 360] }}
-                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                className="inline-block mb-6"
-              >
-                <Star className="w-16 h-16 text-yellow-300" fill="currentColor" />
-              </motion.div>
-
               <h2 className="text-4xl md:text-5xl font-black text-white mb-6">
                 Ready to Get Started?
               </h2>
@@ -428,27 +322,6 @@ const WebDesignServices = () => {
           </motion.div>
         </div>
       </section>
-
-      {/* Footer */}
-      <footer className="relative py-12 px-4 border-t border-white/10">
-        <div className="max-w-7xl mx-auto text-center">
-          <div className="flex items-center justify-center gap-2 mb-4">
-            <Globe className="w-6 h-6 text-purple-400" />
-            <span className="text-2xl font-black text-white">WebFour Solutions</span>
-          </div>
-          <p className="text-gray-400">
-            Transforming ideas into powerful digital experiences since 2005
-          </p>
-          <div className="mt-4">
-            <button
-              onClick={handleConsultation}
-              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full text-white font-bold hover:shadow-lg hover:shadow-purple-500/50 transition-all duration-300"
-            >
-              <span>Call: 7063389331</span>
-            </button>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 };
