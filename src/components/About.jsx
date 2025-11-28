@@ -10,7 +10,7 @@ const About = () => {
       image: "https://images.unsplash.com/photo-1560250097-0b93528c311a",
     },
     {
-      name: " Smith",
+      name: " Sk Sahil",
       role: "Technical Lead",
       image: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e",
     },
@@ -26,7 +26,7 @@ const About = () => {
     <div className="min-h-screen bg-gray-50">
 
 <Helmet>
-        <title>About Us | WebFour Media</title>
+        <title>About Us |  Leading Web Development Services Company Since 2005</title>
         <meta
           name="description"
           content="Learn more about WebFour Media, a leading digital solutions provider specializing in web development, mobile applications, and digital marketing since 2005."
