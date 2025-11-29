@@ -5,7 +5,8 @@ import Work from './Work';
 import Hero from './Hero';
 import Service from './Service';
 import Process from './Process';
-import Card from './Card'
+import Card from './Card';
+import { OurWebsite } from './OurWebsite'; // Add this import
 
 // Animation variants
 const sectionVariants = {
@@ -62,14 +63,14 @@ export const Home = () => {
         <Work />
       </AnimatedSection>
       
-      {/* <AnimatedSection>
-        <Service />
-      </AnimatedSection> */}
-
-
-<Service />
+      <Service />
+      
       <AnimatedSection>
         <Card />
+      </AnimatedSection>
+      
+      <AnimatedSection>
+        <OurWebsite />
       </AnimatedSection>
       
       <AnimatedSection>

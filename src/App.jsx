@@ -11,6 +11,7 @@ import { Home } from './components/Home';
 import Contact from './components/Contact';
 import About from './components/About';
 import Blog from './components/Blog';
+import OurClient from './components/OurWebsite';
 
 function App() {
   return (
@@ -48,6 +49,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/about" element={<About />} />
         <Route path="/blog" element={<Blog />} />
+        <Route path="/our-client" element={<OurClient />} />
       </Routes>
       <Footer />
     </Router>
