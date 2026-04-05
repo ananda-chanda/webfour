@@ -2,6 +2,32 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 const BlueDigitalWebFourMedia = () => {
+  // Featured Projects Data
+  const projects = [
+    {
+      name: 'Greenbacks Microservices',
+      url: 'greenbacksmicroservices.com',
+      link: 'https://greenbacksmicroservices.com',
+      description: 'A modern, scalable microservices platform.',
+      // Using a placeholder image - you can replace these with actual screenshots of your work
+      image: 'https://placehold.co/600x400/1e3a8a/ffffff?text=Greenbacks+Microservices',
+    },
+    {
+      name: 'Urban Tyohar',
+      url: 'urbantyohar.com',
+      link: 'https://urbantyohar.com',
+      description: 'An interactive e-commerce and festival celebration platform.',
+      image: 'https://placehold.co/600x400/065f46/ffffff?text=Urban+Tyohar',
+    },
+    {
+      name: 'Swoichha',
+      url: 'swoichha.com',
+      link: 'https://swoichha.com',
+      description: 'A dedicated platform delivering custom user experiences.',
+      image: 'https://placehold.co/600x400/831843/ffffff?text=Swoichha',
+    }
+  ];
+
   // Platform logos data with additional platforms
   const platforms = [
     { name: 'WordPress', alt: 'WordPress logo', src: 'https://storage.googleapis.com/a1aa/image/i25owJNdUWKodgXFimXm13nz7DBWVd9lMfjV5jalJqQ.jpg', gradient: 'from-blue-500 to-blue-700' },
@@ -37,6 +63,7 @@ const BlueDigitalWebFourMedia = () => {
       
       {/* Main content container */}
       <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        
         {/* Header section with gradient */}
         <motion.header 
           initial={{ opacity: 0, y: -20 }}
@@ -52,8 +79,58 @@ const BlueDigitalWebFourMedia = () => {
             Empowering businesses with cutting-edge technologies and expert solutions for digital success
           </p>
         </motion.header>
+
+        {/* --- NEW SECTION: Our Featured Projects --- */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="mb-20"
+        >
+          <h2 className="text-2xl md:text-3xl font-bold text-center mb-10 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-700">
+            Our Featured Work
+          </h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {projects.map((project, index) => (
+              <motion.div 
+                key={project.name}
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.4, delay: 0.15 * index }}
+                className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group flex flex-col"
+              >
+                <div className="relative h-48 overflow-hidden">
+                  <div className="absolute inset-0 bg-blue-900 bg-opacity-20 group-hover:bg-opacity-0 transition-all z-10"></div>
+                  <img 
+                    src={project.image} 
+                    alt={project.name} 
+                    className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
+                  />
+                </div>
+                <div className="p-6 flex-grow flex flex-col justify-between">
+                  <div>
+                    <h3 className="text-xl font-bold text-gray-800 mb-2">{project.name}</h3>
+                    <p className="text-gray-600 text-sm mb-4">{project.description}</p>
+                  </div>
+                  <a 
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center text-blue-600 font-semibold hover:text-indigo-700 transition-colors"
+                  >
+                    Visit {project.url}
+                    <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                  </a>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
         
-        {/* Technologies section with improved design */}
+        {/* Technologies section */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
